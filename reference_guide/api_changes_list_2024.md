@@ -75,9 +75,6 @@ NOTE: Entries not starting with code quotes (`name`) can be added to document no
 
 ### IntelliJ Platform 2024.1
 
-`com.intellij.refactoring.RefactoringHelper.prepareOperation(UsageInfo [] usages, List<PsiElement> elements)` abstract method added
-: Use instead of `com.intellij.refactoring.RefactoringHelper.prepareOperation(UsageInfo [] usages)` and `com.intellij.refactoring.RefactoringHelper.prepareOperation(UsageInfo [] usages, PsiElement primaryElement)`.
-
 `com.intellij.refactoring.RefactoringHelper.prepareOperation(UsageInfo [] usages)` method removed
 : Use `com.intellij.refactoring.RefactoringHelper.prepareOperation(UsageInfo [] usages, List<PsiElement> elements)` instead.
 
@@ -166,3 +163,38 @@ Package `com.jetbrains.jinja2` renamed to `com.intellij.jinja`
 
 `org.jetbrains.plugins.github.pullrequest.action.GHPRActionKeys.getPULL_REQUEST_DATA_PROVIDER()` method removed
 : Migrated to MVVM, hidden implementation details.
+
+### Kotlin Plugin 2024.1
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitor.visitInlinedFunctionBlock(inlinedFunctionBlock: IrInlinedFunctionBlock, data: D)` abstract method added
+
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitor.visitReturnableBlock(returnableBlock: IrReturnableBlock, data: D)` abstract method added
+
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitorVoid.visitInlinedFunctionBlock(inlinedFunctionBlock: IrInlinedFunctionBlock)` abstract method added
+
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitorVoid.visitInlinedFunctionBlock(inlinedFunctionBlock: IrInlinedFunctionBlock, data: Nothing?)` abstract method added
+
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitorVoid.visitReturnableBlock(returnableBlock: IrReturnableBlock)` abstract method added
+
+`org.jetbrains.kotlin.ir.visitors.IrElementVisitorVoid.visitReturnableBlock(retunrableBlock: IrReturnableBlock, data: Nothing?)` abstract method added
+
+
+`org.jetbrains.kotlin.fir.expressions.FirConstExpression` class renamed `org.jetbrains.kotlin.fir.expressions.FirLiteralExpression`
+
+`org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin.DELEGATE` class removed
+: `org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin.Companion.DELEGATE` should be used instead
+
+`org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin.DELEGATED_MEMBER`
+: `org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin.Companion.DELEGATED_MEMBER` should be used instead
+
+`org.jetbrains.kotlin.config.JvmDefaultMode.DEFAULT` field removed
+: Use `org.jetbrains.kotlin.config.JvmDefaultMode.DISABLE`
+
+`org.jetbrains.kotlin.backend.common.lower.LocalDeclarationsLoweringKt.getParentsWithSelf(IrDeclaration)` method renamed `org.jetbrains.kotlin.ir.util.IrUtilsKt.getParentsWithSelf`
+
+`org.jetbrains.kotlin.daemon.common.CompileService.Companion.getNO_SESSION()` method removed
+: Use `org.jetbrains.kotlin.daemon.common.CompileService.NO_SESSION` const instead
+
+`org.jetbrains.kotlin.ir.declarations.IrDeclarationOriginImpl` class made final
+: Create new `IrDeclarationOrigin` by delegation, see https://github.com/JetBrains/kotlin/blob/a3b55cf758f3a7ceb596f65507c2f61ada5266af/compiler/ir/ir.tree/src/org/jetbrains/kotlin/ir/declarations/IrDeclarationOrigin.kt#L20
+
+
